@@ -31,7 +31,7 @@ depends=(
 'glew' 'glu' 'hicolor-icon-theme' 'jre7-openjdk' 'lame' 'libaacs' 'libao' 'libass' 'libbluray' 'libcap' 'libcdio'
 'libcec' 'libdbus' 'libjpeg-turbo' 'libltdl' 'libmad' 'libmariadbclient' 'libmicrohttpd' 'libmodplug' 'libmpeg2'
 'libpng' 'libpng12' 'libpulse' 'libtiff' 'libsamplerate' 'libsystemd' 'libssh' 'libusb' 'libva' 'libvdpau' 'libvorbis'
-'libxinerama' 'libxml2' 'libxmu' 'libxrandr' 'libxslt' 'libxt' 'lsb-release' 'lzo' 'mesa' 'mysql' 'odroid-libgl'
+'libxinerama' 'libxml2' 'libxmu' 'libxrandr' 'libxslt' 'libxt' 'lsb-release' 'lzo' 'mesa' 'mysql' 'odroid-libgl-mali'
 'pcre' 'python2' 'python2-pillow' 'python2-simplejson' 'rtmpdump' 'sdl' 'sdl_image' 'sdl_mixer' 'smbclient' 'sqlite'
 'taglib' 'tinyxml' 'xorg-xdpyinfo' 'xorg-util-macros' 'yajl' 'zlib'
 )
