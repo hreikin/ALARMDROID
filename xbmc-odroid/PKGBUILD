@@ -11,6 +11,7 @@
 # Contributor: Zeqadious <zeqadious.at.gmail.dot.com>
 # Contributor: BartÅ‚omiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Maxime Gauduin <alucryd@gmail.com>
+# Contributor: hreikin <odroid.forum.com>
 #
 # Original credits go to Edgar Hucek <gimli at dark-green dot com>
 # for his xbmc-vdpau-vdr PKGBUILD at https://archvdr.svn.sourceforge.net/svnroot/archvdr/trunk/archvdr/xbmc-vdpau-vdr/PKGBUILD
@@ -53,9 +54,9 @@ optdepends=(
 'upower: Display battery level'
 )
 install="$pkgname.install"
-_commit=43b618dac0c381e858f27d7cb4cd1b27a8dbea90
+_commit=fa8281b3388a1e73f5d2c85285c3a4f185fba3b5
 source=(
-	"git+https://github.com/hreikin/xbmc-odroid.git#branch=Gotham-mfc-devel"
+	"git+https://github.com/xbmc/xbmc.git"
 )
 sha256sums=(
 	'SKIP'
@@ -72,9 +73,9 @@ pkgver() {
 prepare() {
 	cd ${pkgname}
 
-	find -type f -name *.py -exec sed 's|^#!.*python$|#!/usr/bin/python2|' -i "{}" +
-	sed 's|^#!.*python$|#!/usr/bin/python2|' -i tools/depends/native/rpl-native/rpl
-	sed 's/python/python2/' -i tools/Linux/xbmc.sh.in
+	git pull memeka/Gotham-mfc
+	git checkout memeka/Gotham-mfc -b Gotham-mfc-rebase
+	git rebase origin/Gotham
 }
 
 build() {
@@ -84,7 +85,7 @@ build() {
 	./bootstrap
 
 	# Configuring XBMC
-	#export PYTHON_VERSION=2  # external python v2
+	export PYTHON_VERSION=2.7  # external python v2
 	./configure --enable-codec=mfc \
 		--enable-libcec \
 		--enable-xrandr \
