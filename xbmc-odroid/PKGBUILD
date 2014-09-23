@@ -54,9 +54,9 @@ optdepends=(
 'upower: Display battery level'
 )
 install="$pkgname.install"
-_commit=fa8281b3388a1e73f5d2c85285c3a4f185fba3b5
+_commit=867305b97e773186eec599d958bf2d0e2769da64
 source=(
-	"git+https://github.com/xbmc/xbmc.git"
+	"git+https://github.com/xbmc/xbmc.git#branch=Gotham"
 )
 sha256sums=(
 	'SKIP'
@@ -65,21 +65,23 @@ sha256sums=(
 _prefix='/usr'
 
 pkgver() {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir/xbmc"
 	# suggested by marzoul
 	git log -1 --date=short --format="%cd.%h" | tr -d '-'
 }
 
 prepare() {
-	cd ${pkgname}
+	cd xbmc
 	git remote add memeka git://github.com/mihailescu2m/xbmc
-	git pull memeka/Gotham-mfc
-	git checkout memeka/Gotham-mfc -b Gotham-mfc-rebase
+	git config merge.renamelimit 6000
+	git pull memeka Gotham-mfc
+	git checkout Gotham-mfc 
+	git checkout -b Gotham-mfc-rebase
 	git rebase origin/Gotham
 }
 
 build() {
-	cd ${pkgname}
+	cd xbmc
 
 	# Bootstrapping
 	./bootstrap
@@ -117,18 +119,18 @@ build() {
 }
 
 package() {
-	cd ${pkgname}
+	cd xbmc
 	# Running make install
 	make DESTDIR="$pkgdir" install
 
 	# Tools
-	install -Dm755 $srcdir/$pkgname/tools/TexturePacker/TexturePacker \
+	install -Dm755 $srcdir/xbmc/tools/TexturePacker/TexturePacker \
 		${pkgdir}${_prefix}/lib/xbmc/
 
 	# Licenses
-	install -dm755 ${pkgdir}${_prefix}/share/licenses/${pkgname}
+	install -dm755 ${pkgdir}${_prefix}/share/licenses/xbmc
 	for licensef in LICENSE.GPL copying.txt; do
 		mv ${pkgdir}${_prefix}/share/doc/xbmc/${licensef} \
-			${pkgdir}${_prefix}/share/licenses/${pkgname}
+			${pkgdir}${_prefix}/share/licenses/xbmc
 	done
 }
