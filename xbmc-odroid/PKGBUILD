@@ -1,5 +1,6 @@
 # vim:set ft=sh:
-# Maintainer: BlackIkeEagle < ike DOT devolder AT gmail DOT com >
+# Maintainer: hreikin <odroid.forum.com>
+# Contributor: BlackIkeEagle < ike DOT devolder AT gmail DOT com >
 # Contributor: DonVla <donvla@users.sourceforge.net>
 # Contributor: Ulf Winkelvos <ulf [at] winkelvos [dot] de>
 # Contributor: Ralf Barth <archlinux dot org at haggy dot org>
@@ -11,7 +12,7 @@
 # Contributor: Zeqadious <zeqadious.at.gmail.dot.com>
 # Contributor: BartÅ‚omiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Maxime Gauduin <alucryd@gmail.com>
-# Contributor: hreikin <odroid.forum.com>
+
 #
 # Original credits go to Edgar Hucek <gimli at dark-green dot com>
 # for his xbmc-vdpau-vdr PKGBUILD at https://archvdr.svn.sourceforge.net/svnroot/archvdr/trunk/archvdr/xbmc-vdpau-vdr/PKGBUILD
