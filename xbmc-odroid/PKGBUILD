@@ -63,7 +63,7 @@ sha256sums=(
 	'SKIP'
 )
 
-_prefix='/usr'
+_prefix='/usr/local'
 
 pkgver() {
 	cd "$srcdir/xbmc"
