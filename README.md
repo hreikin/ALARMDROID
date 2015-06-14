@@ -1,10 +1,7 @@
-ODROID-AUR
+ALARMDROID
 ==========
-This repo contains PKGBUILDS and other needed files for Odroid related AUR packages that i maintain.
+This repo contains PKGBUILDS and other needed files for Odroid related packages that i may need to use for my new ALARM U3 image, it is still very WIP and PKGREL/PKGVER/ETC may need bumping !
 
-They can be found here:
-https://aur.archlinux.org/packages/?SeB=m&K=hreikin
+You can clone the repo and run `makepkg -s` from within the directory of the PKGBUILD you want to build.
 
-You can install these the normal way from the AUR with `wget`, `tar` and `makepkg -s`. Check the Arch Wiki for more info: https://wiki.archlinux.org/index.php/AUR
 
-You can also clone the repo and run `makepkg -s` from within the directory of the PKGBUILD you want to build.
