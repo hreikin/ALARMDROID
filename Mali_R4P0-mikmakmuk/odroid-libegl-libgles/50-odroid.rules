@@ -1,0 +1,4 @@
+KERNEL=="mali", MODE="0660", GROUP="video"
+SUBSYSTEM=="input", MODE="0777"
+KERNEL=="mouse*|mice|event*", MODE="0777"
+SUBSYSTEM=="tty", KERNEL=="tty0", GROUP="tty", MODE="0660"
