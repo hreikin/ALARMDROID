@@ -13,7 +13,6 @@ linux-odroid-u2
 xf86-video-armsoc-odroid
 xf86-video-fbturbo-git
 xf86-video-fbdev
-mesa-libgl
 ```
 How to Build/Install
 --------------------
