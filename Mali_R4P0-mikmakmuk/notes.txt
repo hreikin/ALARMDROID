@@ -1,0 +1,78 @@
+- xorg patch seems to be increase performance, maybe optional (see 
+  http://forum.odroid.com/viewtopic.php?f=8&t=4456&start=100#p37016)
+  This means we don't need special version of X...
+  More confirmation that armsoc driver works on xorg server 1.15 without patch:
+  http://forum.odroid.com/viewtopic.php?f=8&t=4456&start=180#p39076
+
+  Xorg patches are needed, framerate in e2gears drops continuously without them.
+  (Likely) Original source of patches in gripped arch packages: 
+  http://forum.odroid.com/viewtopic.php?f=8&t=4391#p35290
+
+
+- alarm provides already mali and video driver packages, so no need to create them
+  myself:
+  http://forum.odroid.com/viewtopic.php?f=79&t=5508#p44344
+
+- xbmc gotham for odroid:
+  http://forum.odroid.com/viewtopic.php?f=8&t=4456&start=200#p39773
+
+
+### Installation ###
+
+Update to latest kernel (3.8.13.26) and remove all R3P2 packages:
+xbmc-odroid
+xorg-server1.12
+xorg-server1.12-xvfb
+xorg-server1.12-xnest
+xorg-server1.12-xephyr
+xorg-server1.12-xdmx
+xorg-server1.12-devel
+xorg-server1.12-common
+xf86-input-evdev1.12
+xf86-video-odroid
+libump-odroid
+libmali-odroid
+
+Update to latest official kernel (3.8.13.26)
+
+Install patched xorg server 
+http://odroidxu.leeharris.me.uk/u2/xorg-server-dsd-1.15.1-1-armv7h.pkg.tar.xz
+(source https://github.com/gripped/odroid-u2-pkgbuilds/tree/master/xorg-server-dsd)
+
+Install official video driver
+xf86-video-armsoc-odroid
+
+Install my mali driver package
+odroid-libegl-libgles
+
+Install my mesa replacement package
+mesa-libgl-noegl
+mesa-noegl
+
+Install my xbmc package
+There are different repos: mdrjr, mihailescu2m (memeka), oversun
+v13.0 should work in all repos as this version contains still special
+odroid code for rendering the gui. In newer versions, this code has been 
+removed and stock xmbc code is used in mdrjr and memeka's repos.
+Oversun still uses the special odroid code and it provides good framerates 
+(as of 20140725, commit b8c2651)
+
+see http://forum.odroid.com/viewtopic.php?f=8&t=4823&start=160#p40338
+Deleting .xbmc and rebooting did not help... xbmc-memeka stays at 11fps
+in menue, while oversun reaches 30+fps
+
+A possible culprit is the X server or a special version of it (see
+http://forum.odroid.com/viewtopic.php?f=8&t=4823&start=320#p41884)
+
+Tried out 1.15.0, 1.15.1, 1.15.2. None works. Ubuntu Trusty has
+1.15.1 with which it should apparently work, but no...
+
+Hence we use this repo that has still the odroid specific code:
+https://github.com/Owersun/xbmc.git
+
+owersun
+PYTHON_VERSION=2 ./configure --enable-neon --enable-gles --disable-gl --disable-vdpau --disable-vaapi --disable-crystalhd --disable-openmax --enable-libcec --disable-xrandr --disable-rsxs --disable-fishbmc --disable-projectm --disable-nfs --disable-samba --enable-non-free --disable-optical-drive --disable-libbluray --disable-joystick --disable-debug --enable-optimizations --enable-ccache --host=armv7a-hardfloat-linux-gnueabi --enable-alsa --with-cpu=cortex-a9 --enable-pulse --prefix=/usr --enable-x11 --enable-xrandr --disable-sdl --enable-mfc --with-platform=odroid --disable-afpclient --disable-airplay --disable-airtunes --disable-upnp
+
+
+memeka
+./configure --enable-codec=mfc --enable-libcec  --enable-x11 --enable-sdl --enable-xrandr --enable-neon --disable-debug --enable-optimizations --enable-ccache --enable-gles --enable-non-free  --disable-gl --disable-vdpau --disable-vaapi --disable-crystalhd --disable-openmax --disable-rsxs --disable-projectm --disable-fishbmc --disable-dvdcss --disable-optical-drive --disable-libbluray --enable-texturepacker --with-cpu=cortex-a9 --host=armv7a-hardfloat-linux-gnueabi --disable-nfs --disable-samba --disable-afpclient --disable-airplay --disable-airtunes
