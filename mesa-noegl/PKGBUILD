@@ -10,7 +10,7 @@
 
 pkgbase=mesa-noegl
 pkgname=('mesa-noegl' 'mesa-libgl-noegl')
-pkgver=10.2.7
+pkgver=10.5.7
 pkgrel=1
 arch=('armv7h')
 makedepends=('python2' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'dri3proto' 'presentproto' 
@@ -18,10 +18,11 @@ makedepends=('python2' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'dri3pr
              'libomxil-bellagio' 'clang')
 url="http://mesa3d.sourceforge.net"
 license=('custom')
-source=(ftp://ftp.freedesktop.org/pub/mesa/${pkgver}/MesaLib-${pkgver}.tar.bz2
+source=(ftp://ftp.freedesktop.org/pub/mesa/${pkgver}/mesa-${pkgver}.tar.xz{,.sig}
         LICENSE)
-md5sums=('b54b793d5b60b9da31ba1f86a6f82bf8'
-         '5c65a0fe315dd347e09b1f2826a1df5a')
+sha256sums=('04d06890cd69af8089d6ca76f40e46dcf9cacfe4a9788b32be620574d4638818'
+            'SKIP'
+            '7fdc119cf53c8ca65396ea73f6d10af641ba41ea1dd2bd44a824726e01c8b3f2')
 
 build() {
   cd ${srcdir}/?esa-*
