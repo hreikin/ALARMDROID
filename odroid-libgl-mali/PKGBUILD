@@ -5,16 +5,23 @@ buildarch=4
 
 pkgname=odroid-libgl-mali
 pkgver=r4p0
-pkgrel=1.1
+pkgrel=2
 arch=('armv7h')
 pkgdesc="ODROID Mali GL Driver"
 url="http://www.hardkernel.com/"
 license=('Proprietary')
 provides=('libegl' 'libgles' 'libMali')
-source=("http://builder.mdrjr.net/tools/mali-${pkgver}.txz")
-md5sums=('f88d6db219d2edfbbf7b2e4e816e4d57')
+source=("http://archlinuxarm.org/builder/src/mali-${pkgver}.txz"
+        'mali-odroid.conf')
+md5sums=('f88d6db219d2edfbbf7b2e4e816e4d57'
+         '40f5104200cfceb12b4623d219646d4e')
 
 package() {
+    install -d "${pkgdir}"/usr/lib/mali-egl
+    install -d "${pkgdir}"/etc/ld.so.conf.d
+    cp -a mali/lib* "${pkgdir}"/usr/lib/mali-egl
+    install -Dm644 mali-odroid.conf "${pkgdir}"/etc/ld.so.conf.d/mali-odroid.conf
+    
     install -d -m 0755 ${pkgdir}/opt/${pkgname}/lib
 
     cd ${srcdir}/mali
