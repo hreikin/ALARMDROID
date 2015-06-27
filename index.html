@@ -33,10 +33,10 @@
 
 <p>This repo contains PKGBUILDS and other needed files for Odroid U3 Arch Linux related packages that i use for my new ALARM U3 image.</p>
 
-<p>To install simply build the package with the <code>PKGBUILD</code> and <code>makepkg -s</code> and then install the resulting <code>pkg.tar.xz</code> file with pacman.</p>
+<p>To install simply build the package with the <em>PKGBUILD</em> and <em>makepkg -s</em> and then install the resulting <em>pkg.tar.xz</em> file with pacman.</p>
 
 <h2>
-<a id="how-to-buildinstall" class="anchor" href="#how-to-buildinstall" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to Build/Install</h2>
+<a id="how-to-manually-buildinstall" class="anchor" href="#how-to-manually-buildinstall" aria-hidden="true"><span class="octicon octicon-link"></span></a>How To Manually Build/Install</h2>
 
 <p>Change directory to where you want to clone the repo :</p>
 
@@ -48,23 +48,23 @@
 <pre><code>$ git clone https://github.com/hreikin/ALARMDROID.git
 </code></pre>
 
-<p>Then change directory into the file you wish to install, for example odroid-libgl-mali :</p>
+<p>Then change directory into the file you wish to install, for example <em>xbmc-odroid</em> :</p>
 
 <pre><code>$ cd xbmc-odroid
 </code></pre>
 
-<p>Then take a look at the 'PKGBUILD' to check everything is ok with nano before running 'makepkg -s' :</p>
+<p>Then take a look at the <em>PKGBUILD</em> to check everything is ok with nano before running <em>makepkg -s</em> :</p>
 
 <pre><code>$ nano PKGBUILD
 $ makepkg -s
 </code></pre>
 
-<p>Once 'makepkg' finishes it will create a 'pkg.tar.xz' file which can be installed with pacman like so :</p>
+<p>Once <em>makepkg</em> finishes it will create a <em>pkg.tar.xz</em> file which can be installed with pacman like so :</p>
 
 <pre><code>$ sudo pacman -U xbmc-odroid-20140901.867305b-1-armv7h.pkg.tar.xz
 </code></pre>
 
-<p>Once you have all the files installed you need to edit your '/etc/xorg.conf' mine has :</p>
+<p>Once you have all the files installed you need to edit your <em>/etc/xorg.conf</em> mine has :</p>
 
 <pre><code># X.Org X server configuration file for xfree86-video-mali
 
@@ -95,9 +95,9 @@ EndSection
 </code></pre>
 
 <h2>
-<a id="install-from-repo" class="anchor" href="#install-from-repo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install from repo</h2>
+<a id="install-from-my-repo" class="anchor" href="#install-from-my-repo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install From My Repo</h2>
 
-<p>Alternatively you can install my successful builds which are hosted in a repo for quick installation. Simply edit your '/etc/pacman.conf' and add these few lines to the bottom of the file :</p>
+<p>Alternatively you can install my successful builds which are hosted in a repo for quick installation. Simply edit your <em>/etc/pacman.conf</em> and add these few lines to the bottom of the file :</p>
 
 <pre><code>[odroidu]
 SigLevel = Never
