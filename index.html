@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <title>ALARMDROID by hreikin</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>ALARMDROID</h1>
+        <h2>PKGBUILDS and related files for Arch Linux on the Odroid U3</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/hreikin/ALARMDROID/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/hreikin/ALARMDROID/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/hreikin/ALARMDROID" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1>
+<a id="alarmdroid" class="anchor" href="#alarmdroid" aria-hidden="true"><span class="octicon octicon-link"></span></a>ALARMDROID</h1>
+
+<p>This repo contains PKGBUILDS and other needed files for Odroid U3 Arch Linux related packages that i use for my new ALARM U3 image.</p>
+
+<p>To install simply build the package with the <code>PKGBUILD</code> and <code>makepkg -s</code> and then install the resulting <code>pkg.tar.xz</code> file with pacman.</p>
+
+<h2>
+<a id="how-to-buildinstall" class="anchor" href="#how-to-buildinstall" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to Build/Install</h2>
+
+<p>Change directory to where you want to clone the repo :</p>
+
+<pre><code>$ cd git
+</code></pre>
+
+<p>Then clone the repo :</p>
+
+<pre><code>$ git clone https://github.com/hreikin/ALARMDROID.git
+</code></pre>
+
+<p>Then change directory into the file you wish to install, for example odroid-libgl-mali :</p>
+
+<pre><code>$ cd xbmc-odroid
+</code></pre>
+
+<p>Then take a look at the 'PKGBUILD' to check everything is ok with nano before running 'makepkg -s' :</p>
+
+<pre><code>$ nano PKGBUILD
+$ makepkg -s
+</code></pre>
+
+<p>Once 'makepkg' finishes it will create a 'pkg.tar.xz' file which can be installed with pacman like so :</p>
+
+<pre><code>$ sudo pacman -U xbmc-odroid-20140901.867305b-1-armv7h.pkg.tar.xz
+</code></pre>
+
+<p>Once you have all the files installed you need to edit your '/etc/xorg.conf' mine has :</p>
+
+<pre><code># X.Org X server configuration file for xfree86-video-mali
+
+Section "Device"
+    Identifier  "Mali-Fbdev"
+    Driver      "armsoc"
+    Option      "fbdev"             "/dev/fb1"
+    Option      "Debug"         "false"
+    Option      "DPMS"          "false"
+    Option      "Fimg2DExa"     "false"
+    Option      "DRI2"          "true"
+    Option      "DRI2_PAGE_FLIP"    "false"
+#   Option      "Fimg2DExaSolid"    "false"
+#   Option      "Fimg2DExaCopy"     "false"
+#   Option      "Fimg2DExaComposite"    "false"
+        Option          "SWcursorLCD"           "false"
+EndSection
+
+Section "Screen"
+    Identifier   "Default Screen"
+    Device       "Mali-Fbdev"
+    DefaultDepth 24
+EndSection
+
+Section "DRI"
+    Mode 0666
+EndSection
+</code></pre>
+      </section>
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-64568302-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
