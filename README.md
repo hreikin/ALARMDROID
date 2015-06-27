@@ -1,19 +1,9 @@
 ALARMDROID
 ==========
-This repo contains PKGBUILDS and other needed files for Odroid related packages that i may need to use for my new ALARM U3 image, it is still very WIP and PKGREL/PKGVER/ETC may need bumping !
+This repo contains PKGBUILDS and other needed files for Odroid U3 Arch Linux related packages that i use for my new ALARM U3 image.
 
-To install simply build the package with the `PKGBUILD` and `makepkg -s` and then install the resulting `pkg.tar.xz` file with pacman. The packages i recommend you install are :
-```
-odroid-libgl-mali
-mesa-noegl
-```
-You will also need these packages from the official repos (amongst others) :
-```
-linux-odroid-u2
-xf86-video-armsoc-odroid
-xf86-video-fbturbo-git
-xf86-video-fbdev
-```
+To install simply build the package with the `PKGBUILD` and `makepkg -s` and then install the resulting `pkg.tar.xz` file with pacman.
+
 How to Build/Install
 --------------------
 Change directory to where you want to clone the repo :
@@ -26,16 +16,16 @@ $ git clone https://github.com/hreikin/ALARMDROID.git
 ```
 Then change directory into the file you wish to install, for example odroid-libgl-mali :
 ```
-$ cd odroid-libgl-mali
+$ cd xbmc-odroid
 ```
 Then take a look at the 'PKGBUILD' to check everything is ok with nano before running 'makepkg -s' :
 ```
 $ nano PKGBUILD
 $ makepkg -s
 ```
-Once 'makepkg' finishes it will create a 'pkg.tar.xz' file (maybe more than 1!) which can be installed with pacman like so :
+Once 'makepkg' finishes it will create a 'pkg.tar.xz' file which can be installed with pacman like so :
 ```
-$ sudo pacman -U odroid-libgl-mali-r4p0-2-armv7h.pkg.tar.xz
+$ sudo pacman -U xbmc-odroid-20140901.867305b-1-armv7h.pkg.tar.xz
 ```
 Once you have all the files installed you need to edit your '/etc/xorg.conf' mine has :
 ```
