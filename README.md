@@ -56,3 +56,12 @@ Section "DRI"
 	Mode 0666
 EndSection
 ```
+
+Install from repo
+-----------------------
+Alternatively you can install my successful builds which are hosted in a repo for quick installation. Simply edit your '/etc/pacman.conf' and add these few lines to the bottom of the file :
+```
+[odroidu]
+SigLevel = Never
+Server = http://oph.mdrjr.net/hreikin/repo
+```
