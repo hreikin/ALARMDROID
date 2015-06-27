@@ -20,7 +20,7 @@
 pkgname=kodi-odroid
 pkgver=1
 pkgrel=1
-pkgdesc="XBMC Media Center Gotham mfc Odroid"
+pkgdesc="XBMC Media Center Helix mfc Odroid"
 provides=('kodi' 'xbmc')
 conflicts=('xbmc' 'xbmc-pulse' 'xbmc-svn')
 replaces=('xbmc-svn')
