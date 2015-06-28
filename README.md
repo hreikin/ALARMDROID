@@ -65,3 +65,10 @@ Alternatively you can install my successful builds which are hosted in a repo fo
 SigLevel = Never
 Server = http://oph.mdrjr.net/hreikin/repo
 ```
+Then update pacman and install the desired packages in the usual manner, like so :
+```
+sudo pacman -Syu
+```
+```
+sudo pacman -S xbmc-odroid
+```
